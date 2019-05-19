@@ -2,15 +2,15 @@
 <html>
 <body>
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-	<script src="highcharts.js"></script>
-	<script src="series-label.js"></script>
-	<script src="exporting.js"></script>
-	<script src="export-data.js"></script>
-	<script src="jquery-1.8.3.min.js"></script>
-	<center>
-		<input type="button" value="zoomin" id="zoomin"/>
-		<input type="button" value="zoomout" id="zoomout"/>
-	</center>
+	<script src="js/highcharts.js"></script>
+	<script src="js/series-label.js"></script>
+	<script src="js/exporting.js"></script>
+	<script src="js/export-data.js"></script>
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<!--<center>-->
+		<!--<input type="button" value="zoomin" id="zoomin"/>-->
+		<!--<input type="button" value="zoomout" id="zoomout"/>-->
+	<!--</center>-->
 	<script type="text/javascript">
 	var chart = null;
 	var chartWidth, chartHeight;
@@ -455,20 +455,21 @@
 			2607.80, 2598.73, 2593.07, 2584.68, 2572.41, 2572.13, 2564.39, 2568.26, 2577.68, 2597.52, 
 			2637.54, 2682.90, 2735.69, 2794.62, 2848.31, 2913.37, 2972.06, 3037.31, 3077.71, 3105.13, 
 			3099.65, 3090.89, ]},
-
 	]
 }
 );
 	chartWidth = chart.chartWidth;
 	chartHeight = chart.chartHeight;
-	$('#zoomin').click(function() {
-        chartWidth *= 1.1;
-        chart.setSize(chartWidth, chartHeight);
-	});
-	$('#zoomout').click(function() {
-        chartWidth /= 1.1;
-        chart.setSize(chartWidth, chartHeight);
-	});
+    <!--
+	   $('#zoomin').click(function() {
+       chartWidth = chartWidth * 1.1;
+       chart.setSize(chartWidth, chartHeight);
+	   });
+	   $('#zoomout').click(function() {
+           chartWidth = chartWidth / 1.1;
+           chart.setSize(chartWidth, chartHeight);
+	   });
+       -->
 	</script>
 </body>
 </html>
