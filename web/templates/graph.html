@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Highcharts From Pandas Data</title>
+    <!--<meta name="viewport" content = "width=device-width, initial-scale=1.0">-->
+	<link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/bootstrap/3.3.7/bootstrap.min.css') }}">
+	<script src="{{ url_for('static', filename='js/highcharts/highcharts.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/highcharts/exporting.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/highcharts/exporting.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/bootstrap/3.3.7/bootstrap.min.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+	<center> <h1> Highcharts From Pandas Data </h1> <center/>
+    <div id="mychart"></div>
+    <script type="text/javascript">
+        new Highcharts.Chart({{ chart | safe }});
+    </script>
+    </div>
+</body>
+</html>
