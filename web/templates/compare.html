@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"><link rel="icon" href="https://jscdn.com.cn/highcharts/images/favicon.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/bootstrap/3.3.7/bootstrap.min.css') }}">
+		<script src="{{ url_for('static', filename='js/highcharts/highcharts.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/highcharts/exporting.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/jquery/jquery.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/bootstrap/3.3.7/bootstrap.min.js') }}"></script>
+    </head>
+    <body>
+        <div id="container" style="min-width:400px;height:400px"></div>
+        <script>
+		var sh = {{ sh |safe }}
+		var ss = {{ ss |safe }}
+		var stock_code = {{ stock_code |safe }}
+		var title_text = '指数和' +  stock_code  + 'K线对比图'
+		var chart = Highcharts.chart('container', {
+			chart: {
+				type: 'line',
+				zoomType: 'x',
+				panning: true,
+				panKey: 'shift'
+			},
+			title: {
+				text: title_text
+			},
+			series: [
+				{
+					name: '上证',
+					data: sh 
+				}, {
+					name: stock_code,
+					data: ss 
+				}
+			]
+		});
+        </script>
+    </body>
+</html>
