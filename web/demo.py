@@ -9,9 +9,13 @@ from pandas_highcharts.core import serialize
 
 app = Flask(__name__, static_url_path='')
 
-@app.route('/')
-def compare(chartID = 'app', chart_type = 'line', chart_height = 500):
-    stock_code = "002713.SZ"
+#3 unbanned is lowest
+
+@app.route('/c')
+def compare():
+    stock_code = request.args.get("code") or ""
+    if stock_code == "":
+        return ""
     import tushare as ts
     pro = ts.pro_api("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
     import datetime
@@ -30,13 +34,18 @@ def compare(chartID = 'app', chart_type = 'line', chart_height = 500):
     ss.reverse()
     maxss = max(ss)
     ssnorm = []
+    ratio = float(sh[0]) / ss[0]
     for i in ss:
-        ssnorm.append(i * (maxsh) / maxss)
+        ssnorm.append(i * ratio)
     sh_str = sh.__str__()
     ssnorm_str = ssnorm.__str__()
+    stock_code_str = "\'" + stock_code + "\'"
+    render_template_html = render_template('compare.html', stock_code=stock_code_str, sh=sh_str, ss=ssnorm_str)
+    fp = open(stock_code + ".html", 'wb')
+    fp.write(render_template_html.encode('utf-8'))
+    fp.close()
 
-    stock_code_str = "\'002713.SZ\'"
-    return render_template('compare.html', stock_code=stock_code_str, sh=sh_str, ss=ssnorm_str)
+    return render_template_html
 
 if __name__ == "__main__":
     app.run(debug=True)
