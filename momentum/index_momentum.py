@@ -21,7 +21,8 @@ def cal_index_percent(symbol="sh000001"):
     end_20_close = end_20.close
     percent = (end_0_close - end_20_close) / end_20_close * 100
 
-    print(symbol, end_0_close, end_20_close, percent)
+    #print("%s %.3f %-*.3f %-*.3f"%(symbol, percent, 10, end_0_close, 10, end_20_close))
+    print("{0} {1} {2:>9} {3:>9}".format(symbol, "%.2f"%(percent), end_0_close, end_20_close))
     
     return percent
 
